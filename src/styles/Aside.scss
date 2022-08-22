@@ -1,0 +1,100 @@
+aside{
+    background: #f9f9f9;
+    width: 220px;
+    height: 750px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    top: 50px;
+    left: 80px;
+    align-items: center;
+}
+
+#gandalfs-book {
+    width: 150px;
+    height: 60px;
+    top: 5.5px;
+    left: 3.57px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 10px 10px 0px;
+}
+
+#gandalfs-book img {
+    width: 42.67px;
+    height: 37.17px;
+    top: 5.5px;
+    left: 3.67px;
+    object-fit: cover;
+}
+
+#gandalfs-book h2 {
+    width: 106px;
+    height: 40px;
+    font-weight: 600;
+    color: #4E1469;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+}
+
+#aside-list{
+    padding: 0px;
+    width: fit-content;
+    height: 85%;
+    grid-template-rows: 50px 50px 50px auto 3rem;
+    display: grid;
+    margin-top: 0px;
+}
+#aside-list li{
+    list-style: none;
+    height: 40px;
+    width: 160px;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 30px auto 1rem;
+    flex-direction: row;
+    align-items: baseline;
+    cursor: pointer;
+}
+#aside-list #log-out {
+    grid-template-columns: 110px auto 1rem;
+}
+
+#aside-list #star{
+    height: 10px;
+    width: 10px;
+    position: relative;
+    top: -2px;
+    left: 1px;
+    display: none;
+}
+#aside-list li:hover #star{
+    display: block;
+}
+
+#aside-list li img {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 2px;
+    left: 2px;
+    filter: brightness(0) saturate(100%) invert(77%) sepia(7%) saturate(576%) hue-rotate(193deg) brightness(88%) contrast(91%);
+}
+
+#aside-list li:hover {
+    filter: brightness(0) saturate(100%) invert(12%) sepia(59%) saturate(3884%) hue-rotate(272deg) brightness(82%) contrast(99%);
+    font-weight: 600;
+}
+
+li p{
+    width: fit-content;
+    height: 24px;
+    top: 15.5px;
+    left: 39px;
+    color: #A6AABF;
+}
+

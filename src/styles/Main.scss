@@ -1,0 +1,41 @@
+main {
+    position: relative;
+    left: 200px;
+    top: 30px;
+}
+
+#filter > div {
+    display: flex;
+    justify-content: space-between;
+    width: 880px;
+}
+
+h1 {
+    width: 545px;
+    height: 32px;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 31.5px;
+    letter-spacing: 0.25px;
+    color: #373B5C;
+}
+
+button {
+    cursor: pointer;
+    width: 150px;
+    height: 38px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 38px;
+    letter-spacing: -0.5px;
+    color: #F7F7F7;
+    background: #5d11bd;
+    border: none;
+    border-radius: 15px;
+}
+
+#adventures-list {
+    display: grid;
+    grid-auto-columns: auto;
+}
+
