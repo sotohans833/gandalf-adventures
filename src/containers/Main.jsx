@@ -1,16 +1,19 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import "@styles/Main.scss"
 import AdventureItem from "@components/AdventureItem";
 import Filter from "@containers/Filter";
 import NewAdventure from "@containers/NewAdventure";
 import useGetAdventures from "@hooks/useGetAdventures";
+import AppContext from "@context/AppContext.js"
 const API = "https://the-one-api.dev/v2/character";
-const AccessToken = "_97CL7jIi59DG-27ffh4";
+// const AccessToken = "_97CL7jIi59DG-27ffh4";
+const AccessToken = "_YG-PTM7WXVP7fhxaPxO";
 import placeHolder from "@assets/placeholder.png";
 
 const Main = () => {
     const adventures = useGetAdventures(API, AccessToken);
     const [toggleAdventures, setToggleAdventures] = useState(false);
+    const {state} = useContext(AppContext);
     const handleToggleAdventures = () => {
         setToggleAdventures(!toggleAdventures);
     };
@@ -18,6 +21,8 @@ const Main = () => {
     const createAdventure = (adventureInfo) => {
         if(!adventureTasks.some(adventure => adventure.adventure === adventureInfo.adventure)){
         setAdventureTasks([...adventureTasks, adventureInfo]);
+        }else{
+            alert("Sorry you gotta change your adventure name")
         }
     }
     useEffect(() => {
@@ -25,10 +30,24 @@ const Main = () => {
         if(info){
             setAdventureTasks(JSON.parse(info));
         }
-    }, [])
+    }, []);
     useEffect(() => {
         localStorage.setItem("adventure", JSON.stringify(adventureTasks));
-    }, [adventureTasks])
+    }, [adventureTasks]);
+    let results = []
+    if(!state.cart.length){
+        results = adventures;
+    }else{
+        results = adventures.filter((dato) => dato.name.toLowerCase().includes((state.cart[0].name).toLowerCase()));
+    }
+
+    let addedAdventures = []
+    if(!state.cart.length){
+        addedAdventures = adventureTasks;
+    }else{
+        addedAdventures = adventureTasks.filter((dato) => dato.character.toLowerCase().includes((state.cart[0].name).toLowerCase()));
+    }
+
     return (
         <main>
             <section id="filter">
@@ -41,7 +60,8 @@ const Main = () => {
                 </div>
             </section>
             <section id="adventures-list">
-                {adventureTasks.map(task => (
+                {addedAdventures.map(task =>
+                (
                     <article id="adventures-item" task={task} key={task.adventure}>
                         <img src={placeHolder} alt=""/>
                         <div id="adventure-container">
@@ -59,9 +79,9 @@ const Main = () => {
                         </div>
                     </article>
                 )).reverse()}
-                {adventures.map(item => (
+                {results.map(item => (
                     <AdventureItem item={item} key={item._id}/>
-                )).slice(70, 75)}
+                ))}
             </section>
             {toggleAdventures && <NewAdventure handleAdventures={handleToggleAdventures} createAdventure={createAdventure}/>}
         </main>

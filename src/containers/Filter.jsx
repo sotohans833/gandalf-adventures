@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import "@styles/Filter.scss";
 import magicFilter from "@icons/Magic filter.svg";
 import downArrow from "@icons/Down arrow.svg";
 import Character from "@components/Character";
-import useGetAdventures from "../hooks/useGetAdventures";
+import useGetAdventures from "@hooks/useGetAdventures";
+import AppContext from "@context/AppContext.js"
 const API = "https://the-one-api.dev/v2/character";
-const AccessToken = "_97CL7jIi59DG-27ffh4";
+const AccessToken = "_YG-PTM7WXVP7fhxaPxO";
 
 const Filter = () => {
     const adventures = useGetAdventures(API, AccessToken)
@@ -20,10 +21,10 @@ const Filter = () => {
     return(
         <div id="menu-filter">
             <ul>
-                <li id="section" onClick={show}>
-                    <div id="filter-container">
+                <li id="section">
+                    <div id="filter-container" onClick={show}>
                         <img src={magicFilter} alt="magic-filter" id="magic-filter"/>
-                        <a href="#">Filter by Character</a>
+                        <a href="#" id="filter-text">Filter by Character</a>
                         <img src={downArrow} alt="down-arrow" id="down-arrow"/>
                     </div>
                     <div id="character-container">
