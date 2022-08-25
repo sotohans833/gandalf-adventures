@@ -70,7 +70,7 @@ module.exports = {
     compress: true,
     watchFiles: path.join(__dirname, "./**"),
     historyApiFallback: true,
-    port: 4814,
+    port: 5451,
     open: true,
     },
 };

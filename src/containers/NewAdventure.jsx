@@ -24,12 +24,14 @@ const NewAdventure = ({handleAdventures, createAdventure}) =>{
         }else{
             createAdventure(data);
             setNewAdventure("");
+            let container = document.getElementById("create-adventure");
+            container.style.display = "none";
         }
     }
-    // const hide = () => {
-    //     let container = document.getElementById("create-adventure");
-    //     container.style.display = "none";
-    // }
+    const hide = () => {
+        let container = document.getElementById("create-adventure");
+        container.style.display = "none";
+    }
     return(
     <section id="create-adventure">
         <div id="new-adventure">
