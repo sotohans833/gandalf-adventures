@@ -26,6 +26,10 @@ const NewAdventure = ({handleAdventures, createAdventure}) =>{
             setNewAdventure("");
         }
     }
+    // const hide = () => {
+    //     let container = document.getElementById("create-adventure");
+    //     container.style.display = "none";
+    // }
     return(
     <section id="create-adventure">
         <div id="new-adventure">
@@ -52,7 +56,7 @@ const NewAdventure = ({handleAdventures, createAdventure}) =>{
                 <option>Search by name</option>
                 {adventures.map(adventure => (
                     <Selected adventure={adventure} key={adventure._id}/>
-                ))}
+                )).sort()}
             </select>
             <button
                 id="create-button"

@@ -3,9 +3,9 @@ import placeHolder from "../assets/placeholder.png";
 import AppContext from "@context/AppContext.js"
 
 const Character = ({adventure}) => {
-    const { addToCart } = useContext(AppContext);
+    const { addFilterItem } = useContext(AppContext);
     const handleClick = item => {
-		addToCart(item);
+		addFilterItem(item);
 	}
     return(
         <div id="character-info" onClick={() => handleClick(adventure)}>

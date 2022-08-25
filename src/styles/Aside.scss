@@ -22,6 +22,7 @@ aside{
     align-items: center;
     justify-content: space-between;
     margin: 20px 10px 10px 0px;
+    cursor: pointer;
 }
 
 #gandalfs-book img {
@@ -32,13 +33,15 @@ aside{
     object-fit: cover;
 }
 
-#gandalfs-book h2 {
+#gandalfs-book a {
     width: 106px;
     height: 40px;
     font-weight: 600;
     color: #4E1469;
     line-height: 20px;
     letter-spacing: 0.25px;
+    text-decoration: none;
+    font-size: 24px;
 }
 
 #aside-list{

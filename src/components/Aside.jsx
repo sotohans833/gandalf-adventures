@@ -13,7 +13,7 @@ const Aside = () => {
         <aside>
             <section id="gandalfs-book">
                 <img src={magicHat}/>
-                <h2>Gandalf's Book</h2>
+                <a href="">Gandalf's Book</a>
             </section>
             <ul id="aside-list">
                 <li id="dashboard">

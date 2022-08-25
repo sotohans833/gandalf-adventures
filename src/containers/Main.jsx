@@ -35,17 +35,18 @@ const Main = () => {
         localStorage.setItem("adventure", JSON.stringify(adventureTasks));
     }, [adventureTasks]);
     let results = []
-    if(!state.cart.length){
+    if(!state.itemSelected.length){
         results = adventures;
     }else{
-        results = adventures.filter((dato) => dato.name.toLowerCase().includes((state.cart[0].name).toLowerCase()));
+        results = adventures.filter((dato) => dato.name.toLowerCase().includes((state.itemSelected[0].name).toLowerCase()));
     }
 
+    console.log(state.itemSelected);
     let addedAdventures = []
-    if(!state.cart.length){
+    if((!state.itemSelected.length) || (state.itemSelected[0].name == "all")){
         addedAdventures = adventureTasks;
     }else{
-        addedAdventures = adventureTasks.filter((dato) => dato.character.toLowerCase().includes((state.cart[0].name).toLowerCase()));
+        addedAdventures = adventureTasks.filter((dato) => dato.character.toLowerCase().includes((state.itemSelected[0].name).toLowerCase()));
     }
 
     return (
@@ -65,20 +66,20 @@ const Main = () => {
                     <article id="adventures-item" task={task} key={task.adventure}>
                         <img src={placeHolder} alt=""/>
                         <div id="adventure-container">
-                            <h2>{task.adventure}</h2>
+                            <h2>{task.origin}</h2>
                             <div id="api-info">
                                 <div>
                                     <h3>{task.character}</h3>
                                     <p>Human</p>
                                 </div>
                                 <ul id="location">
-                                    <li>Origin <span>{task.origin}</span></li>
+                                    <li>Origin <span>{task.adventure}</span></li>
                                     <li>Destination <span>{task.destination}</span></li>
                                 </ul>
                             </div>
                         </div>
                     </article>
-                )).reverse()}
+                )).sort()}
                 {results.map(item => (
                     <AdventureItem item={item} key={item._id}/>
                 ))}
