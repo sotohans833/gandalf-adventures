@@ -35,7 +35,7 @@ const Main = () => {
         localStorage.setItem("adventure", JSON.stringify(adventureTasks));
     }, [adventureTasks]);
     let results = []
-    if(!state.itemSelected.length){
+    if(!state.itemSelected.length || (state.itemSelected[0].name == "all")){
         results = adventures;
     }else{
         results = adventures.filter((dato) => dato.name.toLowerCase().includes((state.itemSelected[0].name).toLowerCase()));
