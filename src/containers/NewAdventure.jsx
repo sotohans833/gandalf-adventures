@@ -1,13 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import "@styles/CreateAdventure.css";
 import Close from "@icons/Close.svg";
 import useGetAdventures from "@hooks/useGetAdventures";
+import AppContext from "@context/AppContext.js"
 const API = "https://the-one-api.dev/v2/character";
 const AccessToken = "_YG-PTM7WXVP7fhxaPxO";
 
 const NewAdventure = ({ handleAdventures, createAdventure }) => {
     const characterNames = useGetAdventures(API, AccessToken);
     const [newAdventure, setNewAdventure] = useState();
+    const { updateDisplay, state } = useContext(AppContext);
     const form = useRef(null);
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -32,6 +34,7 @@ const NewAdventure = ({ handleAdventures, createAdventure }) => {
         setNewAdventure("");
         let container = document.getElementById("create-adventure");
         container.style.display = "none";
+        updateDisplay();
         }
     };
     return (

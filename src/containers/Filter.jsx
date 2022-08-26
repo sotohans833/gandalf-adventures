@@ -44,7 +44,7 @@ const Filter = () => {
                             <img src={placeHolder} alt="placeholder" id="character-image"/>
                             <div>
                                 <p><a href="#">Show</a></p>
-                                <span>All Characters</span>
+                                <span>All Adventures</span>
                             </div>
                         </div>
                         {adventures.map(adventure => (

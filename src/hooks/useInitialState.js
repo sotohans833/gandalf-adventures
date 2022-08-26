@@ -2,6 +2,7 @@ import {useState} from "react";
 
 const InitialState = {
     itemSelected: [],
+    adventureDisplay: false,
 }
 const useInitialState = () => {
     const [state, setState] = useState(InitialState);
@@ -12,17 +13,17 @@ const useInitialState = () => {
             itemSelected: [item],
         });
     };
-    const removeFromCart = (indexValue) => {
+    const updateDisplay = (bool) => {
         setState({
             ...state,
-            cart: state.cart.filter((product, index) => index != indexValue),
+            adventureDisplay: bool,
         })
     };
 
     return {
         state,
         addFilterItem,
-        removeFromCart,
+        updateDisplay,
     }
 }
 
