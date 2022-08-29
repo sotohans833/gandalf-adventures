@@ -1,15 +1,13 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState } from "react";
 import "@styles/CreateAdventure.css";
 import Close from "@icons/Close.svg";
 import useGetAdventures from "@hooks/useGetAdventures";
-import AppContext from "@context/AppContext.js"
 const API = "https://the-one-api.dev/v2/character";
 const AccessToken = "_YG-PTM7WXVP7fhxaPxO";
 
 const NewAdventure = ({ handleAdventures, createAdventure }) => {
     const characterNames = useGetAdventures(API, AccessToken);
     const [newAdventure, setNewAdventure] = useState();
-    const { updateDisplay, state } = useContext(AppContext);
     const form = useRef(null);
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,66 +31,76 @@ const NewAdventure = ({ handleAdventures, createAdventure }) => {
         createAdventure(data);
         setNewAdventure("");
         let container = document.getElementById("create-adventure");
+        let fade = document.getElementById("fadeToBlack");
         container.style.display = "none";
-        updateDisplay();
+        fade.style.display = "none"
+
         }
     };
     return (
-        <section id="create-adventure">
-        <div id="new-adventure">
+    <section>
+        <div id="fadeToBlack"></div>
+        <div id="create-adventure">
+            <div id="new-adventure">
             <h2>New Adventure</h2>
             <img src={Close} alt="" onClick={handleAdventures} />
-        </div>
-        <h3 id="about">About Adventure</h3>
-        <form action="" ref={form}>
+            </div>
+            <h3 id="about">About Adventure</h3>
+            <form action="" ref={form}>
             <label htmlFor="adventure-name">Adventure name</label>
             <input
-            type="text"
-            id="adventure-name"
-            name="adventure-name"
-            value={newAdventure}
+                type="text"
+                id="adventure-name"
+                name="adventure-name"
+                value={newAdventure}
             />
             <ul id="origin-destination">
-            <li id="origin-input">
+                <li id="origin-input">
                 <label htmlFor="origin">Origin</label>
-                <input type="text" id="origin" name="origin" value={newAdventure} />
-            </li>
-            <li id="destination-input">
+                <input
+                    type="text"
+                    id="origin"
+                    name="origin"
+                    value={newAdventure}
+                />
+                </li>
+                <li id="destination-input">
                 <label htmlFor="destination">Destination</label>
                 <input
-                type="text"
-                id="destination"
-                name="destination"
-                value={newAdventure}
+                    type="text"
+                    id="destination"
+                    name="destination"
+                    value={newAdventure}
                 />
-            </li>
+                </li>
             </ul>
             <h3 id="who">Who is the Character?</h3>
             <label htmlFor="character" id="selected-label">
-            Character
+                Character
             </label>
             <input
-            list="choice"
-            name="character"
-            id="selected"
-            placeholder="Search by name"
+                list="choice"
+                name="character"
+                id="selected"
+                placeholder="Search by name"
             />
             <datalist id="choice">
-            {characterNames.map((characterName) => (
+                {characterNames.map((name) => (
                 <option
-                value={characterName.name}
-                characterName={characterName}
-                key={characterName.adventure}
+                    value={name.name}
+                    name={name}
+                    key={name.adventure}
                 >
-                {characterName.name}
+                    {name.name}
                 </option>
-            ))}
+                ))}
             </datalist>
             <button id="create-button" onClick={() => handleSubmit(event)}>
-            Create
+                Create
             </button>
-        </form>
-        </section>
+            </form>
+        </div>
+    </section>
     );
 };
 

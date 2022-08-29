@@ -13,10 +13,9 @@ import placeHolder from "@assets/placeholder.png";
 const Main = () => {
     const adventures = useGetAdventures(API, AccessToken);
     const [toggleAdventures, setToggleAdventures] = useState(false);
-    const {updateDisplay, state} = useContext(AppContext);
+    const {state} = useContext(AppContext);
     const handleToggleAdventures = () => {
         setToggleAdventures(!toggleAdventures);
-        updateDisplay(!toggleAdventures)
     };
     const [adventureTasks, setAdventureTasks] = useState([]);
     const createAdventure = (adventureInfo) => {
@@ -48,9 +47,6 @@ const Main = () => {
     }else{
         addedAdventures = adventureTasks.filter((dato) => dato.character.toLowerCase().includes((state.itemSelected[0].name).toLowerCase()));
     }
-    console.log(state.adventureDisplay);
-    const main =  document.getElementById("main");
-    // main.style.backgroundColor = green;
     return (
         <main id="main">
             <section id="filter">
@@ -81,7 +77,7 @@ const Main = () => {
                             </div>
                         </div>
                     </article>
-                )).sort()}
+                )).reverse()}
                 {results.map(item => (
                     <AdventureItem item={item} key={item._id}/>
                 ))}

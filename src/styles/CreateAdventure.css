@@ -1,3 +1,11 @@
+section #fadeToBlack {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    background-color: rgba(0,0,0,0.5);
+    left: 0px;
+}
 #create-adventure {
     display: flex;
     flex-direction: column;
@@ -8,8 +16,8 @@
     border-radius: 8px 0px 0px 8px;
     border: solid 2px #5d11bd;
     align-items: center;
-    right: -85px;
-    top: -37px;
+    right: -63px;
+    top: -38px;
 }
 
 #new-adventure {
